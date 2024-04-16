@@ -3,19 +3,26 @@ from tkinter import filedialog
 from datetime import datetime
 
 def open_file():
-    file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+    file_path = "OneDrive\Рабочий стол\Study\Functional\lab8\Habits.txt"
     if file_path:
-        with open(file_path, "r") as file:
+        with open(file_path, "r") as file:      
             text = file.read()
-            text_area.delete(1.0, tk.END)
-            text_area.insert(tk.END, text)
+
+        view_file_window = tk.Toplevel(root)
+        view_file_window.title("Просмотр привычек")
+        text_area_view = tk.Text(view_file_window, undo=False)
+        text_area_view.pack(fill="both", expand=True)
+        text_area_view.insert(tk.END, text)
+        text_area_view.config(state="disabled")
+
 
 def save_file():
-    text = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    text = f"[ {time} ]"
     text += "\t" + text_area.get(1.0, tk.END) + "\n"
-    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt")])
-    if file_path:
-        with open(file_path, "w") as file:
+
+    file_path = "OneDrive\Рабочий стол\Study\Functional\lab8\Habits.txt"
+    with open(file_path, "a") as file:
             file.write(text)
 
 root = tk.Tk()
@@ -34,7 +41,7 @@ root.config(menu=menu_bar)
 
 file_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Файл", menu=file_menu)
-file_menu.add_command(label="Открыть", command=open_file)
+file_menu.add_command(label="Просмотр", command=open_file)
 file_menu.add_command(label="Сохранить", command=save_file)
 
 root.mainloop()
