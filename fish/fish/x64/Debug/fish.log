@@ -1,0 +1,4 @@
+﻿  fish.cpp
+C:\Users\sagin\OneDrive\Рабочий стол\Work\fish\fish\fish.cpp(50,30): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\sagin\OneDrive\Рабочий стол\Work\fish\fish\fish.cpp(51,35): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  fish.vcxproj -> C:\Users\sagin\OneDrive\Рабочий стол\Work\fish\x64\Debug\fish.exe
